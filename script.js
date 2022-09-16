@@ -23,30 +23,33 @@ file.addEventListener("change", () => {
 
 
     data.forEach(element => {
-        console.log(element)
+        let changeName = element.name.split(".")
+
+        let fileExt=changeName.pop()
 
         let tr = document.createElement("tr")
         let fileName = document.createElement("td")
         let fileSize = document.createElement("td")
         let actionInfo = document.createElement("td")
         let btn = document.createElement("button")
-        btn.title = `${element.name.split(".")[0]} ${element.name.split(".")[1]} ${element.size} ${element.lastModifiedDate}`
         btn.append("Info")
         btn.classList.add("info-btn")
         btn.addEventListener("mouseover", dibox)
         function dibox() {
-            box.innerHTML = `<p> <strong>File Name : </strong> ${element.name}</p>
+            box.style.display = "block"
+            box.innerHTML = `<p> <strong>File Name : </strong> ${changeName.join(".")}</p>
+            <p> <strong>File Extension : </strong>${fileExt}</p>
         <p> <strong>File Type : </strong>${element.type}</p>
         <p> <strong>File Size : </strong>${formatSizeUnits(element.size)}</p>
         <p> <strong>File Modified : </strong>${element.lastModifiedDate}</p>
         <p> <strong>File Path : </strong>${element.webkitRelativePath}</p>`
         }
-        btn.addEventListener("mouseleave",()=>{
-            box.innerHTML=""
+        btn.addEventListener("mouseleave", () => {
+            box.style.display = "none"
         })
 
 
-        fileName.append(element.name.split(".")[0])
+        fileName.append(changeName.join("."))
 
         fileSize.append(formatSizeUnits(element.size))
 
