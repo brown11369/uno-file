@@ -32,6 +32,7 @@ file.addEventListener("change", () => {
         let btn = document.createElement("button")
         btn.title = `${element.name.split(".")[0]} ${element.name.split(".")[1]} ${element.size} ${element.lastModifiedDate}`
         btn.append("Info")
+        btn.classList.add("info-btn")
         btn.addEventListener("mouseover", dibox)
         function dibox() {
             box.innerHTML = `<p> <strong>File Name : </strong> ${element.name}</p>
@@ -40,6 +41,9 @@ file.addEventListener("change", () => {
         <p> <strong>File Modified : </strong>${element.lastModifiedDate}</p>
         <p> <strong>File Path : </strong>${element.webkitRelativePath}</p>`
         }
+        btn.addEventListener("mouseleave",()=>{
+            box.innerHTML=""
+        })
 
 
         fileName.append(element.name.split(".")[0])

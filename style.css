@@ -77,12 +77,16 @@ tbody tr:nth-of-type(even){
     background-color: #e3e3e3;
 }
 
+button.info-btn {
+    padding: 3px 11px;
+}
+
 
 /* /////////////// */
 
 
 #box{
-    position: absolute;
+    position: fixed;
     background-color: #c8cfcf;
     right: 0;
     bottom: 0;
